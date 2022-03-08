@@ -5,7 +5,7 @@ if ( ! function_exists( 'is_plugin_active' ) ) {
 }
 
 //Include Theme Cuztomizer Options
-require_once(get_template_directory() . '/admin/customizer.php');
+//include_once(get_template_directory() . '/admin/customizer.php');
 
 //Stylesheets
 function krakatoa_theme_styles() {
@@ -55,10 +55,10 @@ add_action('wp_footer', 'krakatoa_footer_scripts');
 function krakatoa_enable_feautres() {
   add_theme_support( 'post-thumbnails' );
   add_theme_support( 'menus' );
+  add_theme_support( 'wp-block-styles' );
 }
 
 add_action('init', 'krakatoa_enable_feautres');
-
 
 //Disable Adding Paragraphs
 remove_filter( 'the_content', 'wpautop' );
@@ -71,14 +71,11 @@ function krakatoa_excerpt_more( $more ) {
 add_filter( 'excerpt_more', 'krakatoa_excerpt_more' );
 
 //Navigation Menus
-function register_theme_menus() {
-  register_nav_menus(array(
-    'primary-menu' => __('Primary Menu', 'bootpress'),
-    'footer-menu' => __('Footer Menu', 'bootpress'),
-    ));
+function krakatoa_register_theme_menus() {
+  register_nav_menu( 'primary', __( 'Primary Menu', 'krakatoa' ) );
 }
 
-add_action('init', 'register_theme_menus');
+add_action('init', 'krakatoa_register_theme_menus');
 
 //WooCommerce
 function krakatoa_woocommerce_setup() {

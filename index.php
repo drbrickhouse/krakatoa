@@ -8,7 +8,7 @@
 
 <div class="row">
   <!--Breadcrumbs-->
-  <?php get_template_part( 'template-parts/internal/content', 'breadcrumbs' ); ?>
+  <?php get_template_part( 'partials/internal/content', 'breadcrumbs' ); ?>
   <!--End Breadcrumbs-->
   <div class="col-12">
     <div class="row" id="main-wrapper">
