@@ -19,7 +19,7 @@ function krakatoa_theme_styles() {
   wp_enqueue_style('main_css', get_stylesheet_uri());
 }
 
-add_action('wp_enqueue_scripts', 'krakatoa_theme_styles');
+add_action('wp_enqueue_scripts', 'krakatoa_theme_styles', 1);
 
 function krakatoa_admin_styles() {
   wp_enqueue_style('admin_css', get_template_directory_uri() . '/assets/css/admin.css');
