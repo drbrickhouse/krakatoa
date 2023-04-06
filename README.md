@@ -7,11 +7,8 @@ It is important to understand that Krakatoa is, by definition, a power-user's th
 ## Installation
 You may install this theme either by zipping the folder and uploading to the WordPress theme selector or by uploading all files to your themes folder via FTP.
 
-## Plugins
-### Required Plugins
-In order to use many of the most important features of this theme, you must install [ACF](https://wordpress.org/plugins/advanced-custom-fields/). The free version is adequate, and many commonly-used fields are hard-coded into the theme's functions.php.
-
-### Recommended Plugins
-* [Yoast](https://wordpress.org/plugins/wordpress-seo/) - Yoast is a plugin for handling many of the basic SEO edits to your WordPress site. While not absolutely required for the theme to work, WhitePaper utilizes Yoast's breadcrumb function natively, so it his highly recommended if you want to use breadcrumbs.
+## Recommended Plugins
+* [Yoast](https://wordpress.org/plugins/wordpress-seo/) - Yoast is a plugin for handling many of the basic SEO edits to your WordPress site. While not absolutely required for the theme to work, Krakatoa utilizes Yoast's breadcrumb function natively, so it his highly recommended if you want to use breadcrumbs.
 * [Redirection](https://wordpress.org/plugins/redirection/) - This is a powerful plugin for managing 301 redirects.
 * [WP Sitemap Page](https://wordpress.org/plugins/wp-sitemap-page/) - This plugin utilizes a shortcode to create a customizable HTML sitemap.
+* [ACF](https://wordpress.org/plugins/advanced-custom-fields/) - Advanced Custom Fields allows developers to easily and quickly create custom fields, post types, taxonomies, and Gutenberg blocks
