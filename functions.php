@@ -5,7 +5,7 @@ if ( ! function_exists( 'is_plugin_active' ) ) {
 }
 
 //Include Theme Cuztomizer Options
-//include_once(get_template_directory() . '/admin/customizer.php');
+include_once(get_template_directory() . '/admin/customizer.php');
 
 //Stylesheets
 function krakatoa_theme_styles() {
@@ -100,19 +100,19 @@ add_action( 'after_setup_theme', 'krakatoa_woocommerce_edit_actions' );
 
 //Shortcodes
 function krakatoa_shortcode_title(){
-  return '<?php the_title(); ?>';
+  return get_the_title();
 }
 
 function krakatoa_shortcode_content(){
-  return '<?php the_content(); ?>';
+  return get_the_content();
 }
 
 function krakatoa_shortcode_excerpt(){
-  return'<?php the_excerpt(); ?>';
+  return get_the_excerpt();
 }
 
 function krakatoa_shortcode_featured_image(){
-  return '<?php the_post_thumbnail(); ?>';
+  return get_the_post_thumbnail();
 }
 
 function krakatoa_shortcode_category(){
@@ -123,53 +123,15 @@ function krakatoa_shortcode_category(){
 }
 
 function krakatoa_shortcode_featured_image_url(){
-  return '<?php the_post_thumbnail_url(); ?>';
+  return get_the_post_thumbnail_url();
 }
 
 function krakatoa_shortcode_permalink(){
-  return '<?php the_permalink(); ?>';
+  return get_the_permalink();
 }
 
 function krakatoa_shortcode_search_form(){
   return '<?php get_search_form(); ?>';
-}
-
-function krakatoa_shortcode_cta_link(){
-  return '<?php the_field(link); ?>';
-}
-
-function krakatoa_shortcode_cta_icon() {
-  return '<i class="fa <?php the_field(font_awesome_icon_class); ?>"></i>';
-}
-
-function krakatoa_shortcode_event_start_date($format) {
-  extract (shortcode_atts(array(
-    'dateformat' => 'M jS'
-  ), $format));
-
-  $output = '<?php echo eo_get_the_start("' . $dateformat . '"); ?>';
-
-  return $output;
-}
-
-function krakatoa_shortcode_event_end_date($format) {
-  extract (shortcode_atts(array(
-    'dateformat' => 'M jS'
-  ), $format));
-
-  $output = '<?php echo eo_get_the_end("' . $dateformat . '"); ?>';
-
-  return $output;
-}
-
-function krakatoa_shortcode_event_start_time($format) {
-  extract (shortcode_atts(array(
-    'timeformat' => 'g:i A'
-  ), $format));
-
-  $output = '<?php echo eo_get_the_start("' . $timeformat . '"); ?>';
-
-  return $output;
 }
 
 add_shortcode( 'the_title', 'krakatoa_shortcode_title' );
@@ -180,40 +142,10 @@ add_shortcode( 'the_category', 'krakatoa_shortcode_category' );
 add_shortcode( 'featured_image_url', 'krakatoa_shortcode_featured_image_url' );
 add_shortcode( 'the_permalink', 'krakatoa_shortcode_permalink' );
 add_shortcode( 'search_form', 'krakatoa_shortcode_search_form' );
-add_shortcode( 'cta_link', 'krakatoa_shortcode_cta_link' );
-add_shortcode( 'cta_icon', 'krakatoa_shortcode_cta_icon' );
-add_shortcode( 'event_start_date', 'krakatoa_shortcode_event_start_date' );
-add_shortcode( 'event_end_date', 'krakatoa_shortcode_event_end_date' );
-add_shortcode( 'event_start_time', 'krakatoa_shortcode_event_start_time' );
 
 //Widgets
   //Allow Shortcodes in Widgets
   add_filter( 'widget_text', 'shortcode_unautop');
   add_filter('widget_text', 'do_shortcode', 101);
   add_filter('widget_custom_html_content', 'do_shortcode');
-
-function krakatoa_create_widget($name, $id, $description) {
-  register_sidebar(array(
-    'name' => __($name),
-    'id' => $id,
-    'description' => __($description),
-    'before_widget' => '<div class="row widget'.' '.$id.' '.'"><div class="col-12"><div class="row widget-inner"><div class="col-12">',
-    'after_widget' => '</div></div></div></div>',
-    'before_title' => '<h2 class="module-heading">',
-    'after_title' => '</h2>'
-  ));
-}
-
-krakatoa_create_widget('Top Bar', 'top-bar', 'The topmost section of the website, generally used for a phone number or CTA');
-krakatoa_create_widget('Header A1', 'header-a1', '');
-krakatoa_create_widget('Header A2', 'header-a2', '');
-krakatoa_create_widget('Header A3', 'header-a3', '');
-krakatoa_create_widget('Header B1', 'header-b1', '');
-krakatoa_create_widget('Header B1-1', 'header-b1-1', '');
-krakatoa_create_widget('Header B2', 'header-b2', '');
-krakatoa_create_widget('Header B3', 'header-b3', '');
-krakatoa_create_widget('Footer A1', 'footer-a1', '');
-krakatoa_create_widget('Footer B1', 'footer-b1', '');
-krakatoa_create_widget('Footer B2', 'footer-b2', '');
-krakatoa_create_widget('Footer B3', 'footer-b3', '');
 ?>
